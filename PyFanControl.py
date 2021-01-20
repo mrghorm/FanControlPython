@@ -72,10 +72,13 @@ print("yup this is me trying to fix git")
 
 realfan1 = Fan("realfan1", "/sys/devices/platform/applesmc.768/", "fan1")
 
+realfan1.request_set_rpm(2500)
+
+Fan.write_request()
+
 while True:
 
     print(realfan1.get_current_rpm())
-    print("test")
     time.sleep(1)
     
 
