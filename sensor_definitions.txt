@@ -1,0 +1,159 @@
+This isn't actually used by the script but more just for my own reference for this project
+and potential future projects.
+
+Sensor and fan files can be found in:
+>  /sys/devices/platform/applesmc.xxx/
+
+Mac Pro Sensor Definitions:
+
+---------------------------------------------------
+
+TA0P (Ambient) - 36.875, 36.875
+
+TCAC (CPU A core from PCECI) - 88.5781, 11.4219
+
+TCAD (CPU A Diode) - 72.5, 72.5
+
+TCAG () - 57.2812, 57.2812
+
+TCAH (CPU A HeatSink) - 53.875, 53.875
+
+TCAS () - 53.875, 53.875
+
+TCBC (CPU B core from PCECI) - 86.9062, 13.0938
+
+TCBD (CPU B Diode) - 69.75, 69.75
+
+TCBG () - 80, 80
+
+TCBH (CPU B HeatSink) - 52.75, 52.75
+
+TCBS () - 52.75, 52.75
+
+TH1F () - 37.125, 37.125
+
+TH1P (Drive Bay 0) - 37.125, 37.125
+
+TH1V () - 38.2188, 38.2188
+
+TH2F () - 35.9023, 35.9023
+
+TH2P (Drive Bay 1) - 36, 36
+
+TH2V () - 36.875, 36.875
+
+TH3F () - 35.9062, 35.9062
+
+TH3P (Drive Bay 2) - 35.875, 35.875
+
+TH3V () - 36.875, 36.875
+
+TH4F () - 35.7266, 35.7266
+
+TH4P (Drive Bay 3) - 35.75, 35.75
+
+TH4V () - 37.6367, 37.6367
+
+THPS () - 38.2188, 38.2188
+
+THTG () - 58, 58
+
+TM1P (DIMM Proximity 1) - 44, 44
+
+TM2P (DIMM Proximity 2) - 45.375, 45.375
+
+TM2V () - -1, 129
+
+TM3P (DIMM Proximity 3) - 47.375, 47.375
+
+TM3V () - -1, 129
+
+TM4P (DIMM Proximity 4) - 47.375, 47.375
+
+TM5P (DIMM Proximity 5) - 45.5, 45.5
+
+TM6P (DIMM Proximity 6) - 47.875, 47.875
+
+TM6V () - 43.0586, 43.0586
+
+TM7P (DIMM Proximity 7) - 43.75, 43.75
+
+TM7V () - 36.875, 36.875
+
+TM8P (DIMM Proximity 8) - 35.75, 35.75
+
+TM8V () - 48.5898, 48.5898
+
+TM9V () - 50.9141, 50.9141
+
+TMA1 () - 47.75, 47.75
+
+TMA2 () - 48.5, 48.5
+
+TMA3 () - 49.75, 49.75
+
+TMA4 () - 49.75, 49.75
+
+TMB1 () - 38.75, 38.75
+
+TMB2 () - 37.75, 37.75
+
+TMB3 () - 38.25, 38.25
+
+TMB4 () - 38.5, 38.5
+
+TMHS () - 49.75, 49.75
+
+TMLS () - 37.75, 37.75
+
+TMPS () - 49.75, 49.75
+
+TMPV () - 48.5898, 48.5898
+
+TMTG () - 75, 75
+
+TN0D (IOH Diode) - 65.875, 65.875
+
+TN0H (IOH HeatSink) - 53.625, 53.625
+
+TNTG () - 65, 65
+
+Te1F () - -1, 129
+
+Te1P (PCIE Ambient) - 35.875, 35.875
+
+Te1S () - -1, 129
+
+Te2F () - -1, 129
+
+Te2S () - -1, 129
+
+Te3F () - -1, 129
+
+Te3S () - -1, 129
+
+Te4F () - -1, 129
+
+Te4S () - -1, 129
+
+Te5F () - -1, 129
+
+Te5S () - -1, 129
+
+TeGG () - 85, 85
+
+TeGP () - -1, 0
+
+TeRG () - 60, 60
+
+TeRP () - -1, 0
+
+TeRV () - -1, 129
+
+Tp0C (PSMI Supply AC/DC Supply 1) - 39.8125, 39.8125
+
+Tp1C (PSMI Supply AC/DC Supply 2) - 46.4219, 46.4219
+
+TpPS () - 46.4219, 46.4219
+
+TpTG () - 90, 90
