@@ -75,6 +75,7 @@ realfan1 = Fan("realfan1", "/sys/devices/platform/applesmc.768/", "fan1")
 while True:
 
     print(realfan1.get_current_rpm())
+    print("test")
     time.sleep(1)
     
 
