@@ -40,6 +40,8 @@ class Temp:
             finally:
                 o.close()
 
+    def get_current_temp(self):
+        return self.temp_current
 
     # Iterate through all current Fan objects and update current RPM value
     @classmethod

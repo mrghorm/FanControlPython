@@ -24,51 +24,25 @@ from Fan import overwrite_file
 #         file_open.write(message)
 
 
+def get_highest_temp_from_cpu(cpu_list):
+    highest = 0
+    for i in cpu_list:
+        x = i.get_current_temp()
+        if x > highest:
+            highest = x
+
+    return highest
+
+
 ######  DEFINITIONS  ######
 
+coretemp0_parent_dir = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/"
+coretemp1_parent_dir = "/sys/devices/platform/coretemp.1/hwmon/hwmon1/"
 
+fan_parent_dir = "/sys/devices/platform/applesmc.768/"
 
 ###########################
 
-
-testfan = Fan("testfan", "/home/mrghorm/git/FanControlBash/testfan/", "testfan")
-
-print(read_single_line_file("{0}".format(testfan.label_file)))
-
-#testfan.request_set_percentage(50)
-#Fan.write_request()
-#testfan.request_set_percentage(75)
-#Fan.write_request()
-#print(read_single_line_file(testfan.output_file))
-
-#testsensor1 = Temp("testsensor1", "/home/mrghorm/git/FanControlBash/testsensor/", "testsensor")
-'''testsensor1 = Temp("testsensor1", "/home/mrghorm/git/FanControlBash/testsensor/", "testsensor")
->>>>>>> e7ff3babab81f6dd94d4519a2f6dcd32e49a5653
-testsensor2 = Temp("testsensor2", "/home/mrghorm/git/FanControlBash/testsensor/", "testsensor2")
-
-while True:
-
-    Temp.update_current_temps()
-    Fan.update_current_rpms()
-
-    sensortemp = testsensor1.temp_current
-    sensor2temp = testsensor2.temp_current
-    fanrpm = testfan.get_current_rpm()
-
-    testfan.request_set_rpm(sensortemp * 2)
-    testfan.request_set_rpm(sensor2temp * 2)
-
-    Fan.write_request()
-
-    print("{0},{1},{2}".format(testsensor1.temp_current, testsensor2.temp_current, read_single_line_file(testfan.output_file)))
-
-    time.sleep(1)
-
-
-print("yup this is me trying to fix git")
-    
-    time.sleep(1)
-'''
 
 realfan1 = Fan("realfan1", "/sys/devices/platform/applesmc.768/", "fan1")
 
@@ -76,9 +50,49 @@ realfan1.request_set_rpm(2500)
 
 Fan.write_request()
 
+realtemp1 = Temp("realtemp1", coretemp0_parent_dir, "temp10")
+
+
+cpu_a_temps = []
+for i in range(2,8):
+    if(i==5):
+        x = 10
+    elif(i==6):
+        x = 11
+    elif(i== 7):
+        x = 12
+    else:
+        x = i
+
+    cpu_a_temps.append(Temp("cpua_{}".format(x), coretemp0_parent_dir, "temp{}".format(x)))
+
+
+for i in cpu_a_temps:
+    Temp.update_current_temps()
+    print(i.name)
+    print(i.get_current_temp())
+
+print("Highest: {0}".format(get_highest_temp_from_cpu(cpu_a_temps)))
+
+fan_boosta = Fan("BOOSTA", fan_parent_dir, "fan5")
+fan_boostb = Fan("BOOSTB", fan_parent_dir, "fan6")
+fan_intake = Fan("INTAKE", fan_parent_dir, "fan4")
+fan_exhaust = Fan("EXHAUST", fan_parent_dir, "fan3")
+fan_ps = Fan("PS", fan_parent_dir, "fan2")
+fan_pci = Fan("PCI", fan_parent_dir, "fan1")
+
+
+
 while True:
 
-    print(realfan1.get_current_rpm())
+    Temp.update_current_temps()
+
+    print("{0} {1} {2} {3} {4} {5}".format(cpu_a_temps[0].get_current_temp(), cpu_a_temps[1].get_current_temp(), cpu_a_temps[2].get_current_temp(), cpu_a_temps[3].get_current_temp(), cpu_a_temps[4].get_current_temp(), cpu_a_temps[5].get_current_temp()))
+    print("Highest {0}".format(get_highest_temp_from_cpu(cpu_a_temps)))
+
+#    print("Fan RPM: {0}".format(realfan1.get_current_rpm()))
+#    print("Coretemp 10: {0}".format(realtemp1.get_current_temp()))
+
     time.sleep(1)
     
 
