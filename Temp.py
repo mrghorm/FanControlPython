@@ -11,6 +11,7 @@ class Temp:
         Temp.class_registry.append(self)
 
         self.temp_current = 0
+        self.temp_min = 0
         self.temp_max = 0
 
         ### Fan Strings
@@ -41,13 +42,19 @@ class Temp:
                 o.close()
 
     def get_current_temp(self):
-        return self.temp_current
+        return (self.temp_current)
+
+    def set_max_temp(self, temp):
+        self.temp_max = temp
+
+    def set_min_temp(self, temp):
+        self.temp_min = temp
 
     # Iterate through all current Fan objects and update current RPM value
     @classmethod
     def update_current_temps(cls):
         for obj in cls.class_registry:
-            obj.temp_current = int(read_single_line_file(obj.input_file))
+            obj.temp_current = (int(read_single_line_file(obj.input_file)) / 1000)
 
 ### FUNCTIONS ###
 

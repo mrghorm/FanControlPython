@@ -7,6 +7,7 @@ class Fan:
     label_suffix = "_label"
     min_suffix = "_min"
     max_suffix = "_max"
+    manual_suffix = "_manual"
 
     def __init__(self, name, loc, prefix):
 
@@ -30,8 +31,9 @@ class Fan:
         self.label_file = self.file_location + self.prefix + self.label_suffix
         self.min_file = self.file_location + self.prefix + self.min_suffix
         self.max_file = self.file_location + self.prefix + self.max_suffix
+        self.manual_file = self.file_location + self.prefix + self.manual_suffix
 
-        self.file_list = [self.input_file, self.output_file, self.label_file, self.min_file, self.max_file]
+        self.file_list = [self.input_file, self.output_file, self.label_file, self.min_file, self.max_file, self.manual_file]
 
         # Check all files
 
@@ -60,7 +62,7 @@ class Fan:
     def request_set_percentage(self, percent):
         percent_to_rpm = int(((self.fan_max_rpm - self.fan_min_rpm) * percent / 100) + self.fan_min_rpm)
 
-        request_set_rpm(self, percent_to_rpm)
+        self.request_set_rpm(percent_to_rpm)
 
 
     def request_set_rpm(self, rpm):
@@ -69,14 +71,21 @@ class Fan:
         if rpm > self.requested_rpm:
             self.requested_rpm = rpm
 
+    # Returns max RPM of the fan
     def get_max_rpm(self):
         return int(self.fan_max_rpm)
 
+    # Returns min RPM of the fan
     def get_min_rpm(self):
         return int(self.fan_min_rpm)
 
+    # Reads current RPM of fan from driver file
     def get_current_rpm(self):
         return int(read_single_line_file(self.input_file))
+
+    # Sets the fanN_manual file to desired value (should be 1 or 0)
+    def set_manual(self, manual):
+        overwrite_file(self.manual_file, manual)
 
 
     # Class method to submit all requested RPMs
@@ -93,6 +102,8 @@ class Fan:
 
             req_rpm = obj.requested_rpm
 
+            # Only write requested RPM to fan if requested RPM is greater than 0
+            # IE:  any values of -1 wont be written
             if req_rpm >= 0:
 
                 min_req = obj.get_min_rpm()
@@ -108,8 +119,8 @@ class Fan:
                 if req_rpm > max_req:
                     req_rpm = max_req
 
-            # Write request to file
-            overwrite_file(obj.output_file, str(req_rpm))
+                # Write request to file
+                overwrite_file(obj.output_file, str(req_rpm))
 
             # Set requested_rpm back to a non-request state
             obj.requested_rpm = -1
@@ -136,4 +147,4 @@ def overwrite_file(f, message):
 
     with open(f, 'w') as file_open:
         file_open.truncate()
-        file_open.write(message)
+        file_open.write("{0}".format(message))

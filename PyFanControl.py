@@ -43,15 +43,15 @@ fan_parent_dir = "/sys/devices/platform/applesmc.768/"
 
 ###########################
 
+def temp_convert_to_percentage(temp_min, temp_max, temp_current):
+    if(temp_current <= temp_min):
+        return 0
 
-realfan1 = Fan("realfan1", "/sys/devices/platform/applesmc.768/", "fan1")
+    elif(temp_current >= temp_max):
+        return 100
 
-realfan1.request_set_rpm(2500)
-
-Fan.write_request()
-
-realtemp1 = Temp("realtemp1", coretemp0_parent_dir, "temp10")
-
+    else:
+        return (((temp_current - temp_min)*100) / (temp_max - temp_min))
 
 cpu_a_temps = []
 for i in range(2,8):
@@ -81,6 +81,7 @@ fan_exhaust = Fan("EXHAUST", fan_parent_dir, "fan3")
 fan_ps = Fan("PS", fan_parent_dir, "fan2")
 fan_pci = Fan("PCI", fan_parent_dir, "fan1")
 
+fan_boosta.set_manual(1)
 
 
 while True:
@@ -88,7 +89,16 @@ while True:
     Temp.update_current_temps()
 
     print("{0} {1} {2} {3} {4} {5}".format(cpu_a_temps[0].get_current_temp(), cpu_a_temps[1].get_current_temp(), cpu_a_temps[2].get_current_temp(), cpu_a_temps[3].get_current_temp(), cpu_a_temps[4].get_current_temp(), cpu_a_temps[5].get_current_temp()))
-    print("Highest {0}".format(get_highest_temp_from_cpu(cpu_a_temps)))
+    highest = get_highest_temp_from_cpu(cpu_a_temps)
+    print("Highest {0}".format(highest))
+
+    temp_percent = temp_convert_to_percentage(40, 60, highest)
+
+    fan_boosta.request_set_percentage(temp_percent)
+
+    print("RPM {0}".format(fan_boosta.get_current_rpm()))
+
+    Fan.write_request()
 
 #    print("Fan RPM: {0}".format(realfan1.get_current_rpm()))
 #    print("Coretemp 10: {0}".format(realtemp1.get_current_temp()))
