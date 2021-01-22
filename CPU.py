@@ -39,7 +39,7 @@ class CPU:
     def get_temps(self):
         temps = []
         for core in self.cores:
-            temp = core.get_current_temp()
+            temp = (core.get_current_temp() / 1000)
             temps.append(temp)
             
         return temps
