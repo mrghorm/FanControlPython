@@ -38,7 +38,7 @@ def get_highest_temp_from_cpu(cpu_list):
 ######  DEFINITIONS  ######
 
 coretemp0_parent_dir = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/"
-coretemp1_parent_dir = "/sys/devices/platform/coretemp.1/hwmon/hwmon1/"
+coretemp1_parent_dir = "/sys/devices/platform/coretemp.1/hwmon/hwmon2/"
 
 fan_parent_dir = "/sys/devices/platform/applesmc.768/"
 
@@ -75,10 +75,20 @@ fan_ps = Fan("PS", fan_parent_dir, "fan2")
 fan_pci = Fan("PCI", fan_parent_dir, "fan1")
 
 fan_boosta.set_manual(1)
+fan_boostb.set_manual(1)
 
 cpu1 = CPU("cpu1", coretemp0_parent_dir, "temp")
+cpu2 = CPU("cpu2", coretemp1_parent_dir, "temp")
 cpu1.set_max(45)
 cpu1.set_min(30)
+cpu2.set_max(45)
+cpu2.set_min(30)
+
+ps_temp = Temp("Tp0C", fan_parent_dir, )
+pci_temp = Temp("Te1P", fan_parent_dir, )
+southbridge_diode_temp = Temp("TN0D", fan_parent_dir, )
+southbridge_heatsink_temp = Temp("TN0H", fan_parent_dir, )
+
 
 while True:
 
@@ -86,22 +96,39 @@ while True:
     Temp.update_current_temps()
 
     
-    print(cpu1.get_temps())
+    print("CPU 1: {0}".format(cpu1.get_temps()))
+    print("CPU 2: {0}".format(cpu2.get_temps()))
     temp_percent = cpu1.get_current_percentage_highest()
     
-    print("Highest {0}".format(cpu1.get_highest_temp()))
+    print("CPU 1 Highest {0}".format(cpu1.get_highest_temp()))
+    print("CPU 2 Highest {0}".format(cpu2.get_highest_temp()))
 
 #    temp_percent = temp_convert_to_percentage(40, 60, highest)
 
-    print("Percentage " + str(cpu1.get_current_percentage_highest()))
-    fan_boosta.request_set_percentage(cpu1.get_current_percentage_highest())
+    #print("Percentage " + str(cpu1.get_current_percentage_highest()))
+    #fan_boosta.request_set_percentage(cpu1.get_current_percentage_highest())
+    #fan_boostb.request_set_percentage(cpu1.get_current_percentage_highest())
 
-    print("RPM {0}".format(fan_boosta.get_current_rpm()))
+    print("BOOSTA RPM {0}".format(fan_boosta.get_current_rpm()))
+    print("BOOSTB RPM {0}".format(fan_boostb.get_current_rpm()))
 
     Fan.write_request()
 
 #    print("Fan RPM: {0}".format(realfan1.get_current_rpm()))
 #    print("Coretemp 10: {0}".format(realtemp1.get_current_temp()))
+
+
+    
+    ### Begin Frame Output ###
+
+    print("##### BEGIN FRAME OUTPUT #####")
+    print("CPU 1: {0}".format(cpu1.get_temps()))
+    print("High: {0}, Average: {1}".format(cpu1.get_highest_temp(), cpu1.get_average_temp()))
+    print("CPU 2: {0}".format(cpu2.get_temps()))
+    print("High: {0}, Average: {1}".format(cpu2.get_highest_temp(), cpu2.get_average_temp()))
+    print("PS\tPCI\tINTAKE\tEXHAUST\tBOOSTA\tBOOSTB")
+    print("{0}\t{1}\t{2}\t{3}\t{4}\t{5}".format(fan_ps.get_current_rpm(), fan_pci.get_current_rpm(), fan_intake.get_current_rpm(), fan_exhaust.get_current_rpm(), fan_boosta.get_current_rpm(), fan_boostb.get_current_rpm()))
+
 
     time.sleep(1)
     
