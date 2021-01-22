@@ -64,14 +64,14 @@ class Temp:
             return 100
     
         else:
-            return (((temp_current - temp_min)*100) / (temp_max - temp_min))
+            return round(((temp_current - temp_min)*100) / (temp_max - temp_min))
         
 
     # Iterate through all current Fan objects and update current RPM value
     @classmethod
     def update_current_temps(cls):
         for obj in cls.class_registry:
-            obj.temp_current = (int(read_single_line_file(obj.input_file)) / 1000)
+            obj.temp_current = round(int(read_single_line_file(obj.input_file)) / 1000)
 
 ### FUNCTIONS ###
 

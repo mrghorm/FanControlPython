@@ -39,7 +39,7 @@ class CPU:
     def get_temps(self):
         temps = []
         for core in self.cores:
-            temp = (core.get_current_temp() / 1000)
+            temp = round(int(core.get_current_temp()) / 1000)
             temps.append(temp)
             
         return temps
@@ -65,7 +65,7 @@ class CPU:
         
         average = sum / count
         
-        return average
+        return round(average)
     
     def set_max(self, temp):
         self.temp_max = temp
@@ -91,7 +91,7 @@ class CPU:
             return 100
     
         else:
-            return (((temp_current - temp_min)*100) / (temp_max - temp_min))
+            return round(((temp_current - temp_min)*100) / (temp_max - temp_min))
         
         
     def get_current_percentage_average(self):
@@ -106,7 +106,7 @@ class CPU:
             return 100
     
         else:
-            return (((temp_current - temp_min)*100) / (temp_max - temp_min))
+            return round(((temp_current - temp_min)*100) / (temp_max - temp_min))
             
             
     

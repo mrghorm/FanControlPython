@@ -77,7 +77,7 @@ fan_pci = Fan("PCI", fan_parent_dir, "fan1")
 fan_boosta.set_manual(1)
 
 cpu1 = CPU("cpu1", coretemp0_parent_dir, "temp")
-cpu1.set_max(40)
+cpu1.set_max(45)
 cpu1.set_min(30)
 
 while True:
