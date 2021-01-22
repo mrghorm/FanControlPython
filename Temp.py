@@ -42,13 +42,30 @@ class Temp:
                 o.close()
 
     def get_current_temp(self):
-        return (self.temp_current)
+        #return (self.temp_current)
+        return read_single_line_file(self.input_file)
 
     def set_max_temp(self, temp):
         self.temp_max = temp
 
     def set_min_temp(self, temp):
         self.temp_min = temp
+        
+    
+    def get_current_percentage(self):
+        temp_current = self.get_current_temp()
+        temp_min = self.temp_min
+        temp_max = self.temp_max
+        
+        if(temp_current <= temp_min):
+            return 0
+    
+        elif(temp_current >= temp_max):
+            return 100
+    
+        else:
+            return (((temp_current - temp_min)*100) / (temp_max - temp_min))
+        
 
     # Iterate through all current Fan objects and update current RPM value
     @classmethod

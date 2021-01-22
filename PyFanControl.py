@@ -43,15 +43,7 @@ fan_parent_dir = "/sys/devices/platform/applesmc.768/"
 
 ###########################
 
-def temp_convert_to_percentage(temp_min, temp_max, temp_current):
-    if(temp_current <= temp_min):
-        return 0
 
-    elif(temp_current >= temp_max):
-        return 100
-
-    else:
-        return (((temp_current - temp_min)*100) / (temp_max - temp_min))
 
 cpu_a_temps = []
 for i in range(2,8):

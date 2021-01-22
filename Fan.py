@@ -86,6 +86,8 @@ class Fan:
     # Sets the fanN_manual file to desired value (should be 1 or 0)
     def set_manual(self, manual):
         overwrite_file(self.manual_file, manual)
+        
+
 
 
     # Class method to submit all requested RPMs
