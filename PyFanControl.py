@@ -28,7 +28,7 @@ from Fan import overwrite_file
 def get_highest_temp_from_cpu(cpu_list):
     highest = 0
     for i in cpu_list:
-        x = i.get_current_temp()
+        x = int(i.get_current_temp())
         if x > highest:
             highest = x
 
@@ -77,22 +77,24 @@ fan_pci = Fan("PCI", fan_parent_dir, "fan1")
 fan_boosta.set_manual(1)
 
 cpu1 = CPU("cpu1", coretemp0_parent_dir, "temp")
-
+cpu1.set_max(40)
+cpu1.set_min(30)
 
 while True:
 
     # This function should be depreciated
     Temp.update_current_temps()
 
-    print("{0} {1} {2} {3} {4} {5}".format(cpu_a_temps[0].get_current_temp(), cpu_a_temps[1].get_current_temp(), cpu_a_temps[2].get_current_temp(), cpu_a_temps[3].get_current_temp(), cpu_a_temps[4].get_current_temp(), cpu_a_temps[5].get_current_temp()))
-    highest = get_highest_temp_from_cpu(cpu_a_temps)
-    print("Highest {0}".format(highest))
     
     print(cpu1.get_temps())
+    temp_percent = cpu1.get_current_percentage_highest()
+    
+    print("Highest {0}".format(cpu1.get_highest_temp()))
 
-    temp_percent = temp_convert_to_percentage(40, 60, highest)
+#    temp_percent = temp_convert_to_percentage(40, 60, highest)
 
-    fan_boosta.request_set_percentage(temp_percent)
+    print("Percentage " + str(cpu1.get_current_percentage_highest()))
+    fan_boosta.request_set_percentage(cpu1.get_current_percentage_highest())
 
     print("RPM {0}".format(fan_boosta.get_current_rpm()))
 

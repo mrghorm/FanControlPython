@@ -4,10 +4,10 @@ from Temp import Temp
 
 class CPU:
     
-    def __init__(self, name, dir, sensor_prefix):
+    def __init__(self, name, directory, sensor_prefix):
         
         # Set variables
-        self.dir = dir
+        self.directory = directory
         self.sensor_prefix = sensor_prefix
         
         self.temp_max = 0
@@ -16,17 +16,22 @@ class CPU:
         self.cores = []
         
         # Lookup all files with name similar to "temp*_input"
-        lookup_files = "{0}{1}*_input".format(self.dir, self.sensor_prefix)
-        glob.glob(lookup_files)
+        lookup_files = "{0}{1}*_input".format(self.directory, self.sensor_prefix)
+        files_list = glob.glob(lookup_files)
         
         # Iterate through coretemp list
-        for file in lookup_files:
+        for f in files_list:
             
+            print("FILE " + f)
+
             # Strip parts of the string to get name and prefix of the sensor
-            corename = file.replace(self.dir, '')
+            corename = f.replace(self.directory, '')
             coreprefix = corename.replace("_input", '')
             
-            core = Temp("core{0}".format(lookup_files.index(file)), self.dir, coreprefix)
+            print("CORENAME " + corename)
+            print("COREPREFIX " + coreprefix)
+
+            core = Temp("core{0}".format(files_list.index(f)), self.directory, coreprefix)
             
             self.cores.append(core)
             
@@ -45,7 +50,7 @@ class CPU:
         highest = 0
         
         for temp in temps:
-            if temp > highest:
+            if int(temp) > int(highest):
                 highest = temp
                 
         return highest
@@ -75,9 +80,9 @@ class CPU:
         return self.temp_min
     
     def get_current_percentage_highest(self):
-        temp_current = self.get_highest_temp()
-        temp_min = self.temp_min
-        temp_max = self.temp_max
+        temp_current = int(self.get_highest_temp())
+        temp_min = int(self.temp_min)
+        temp_max = int(self.temp_max)
         
         if(temp_current <= temp_min):
             return 0
