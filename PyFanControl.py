@@ -128,6 +128,7 @@ while True:
     print("High: {0}, Average: {1}".format(cpu2.get_highest_temp(), cpu2.get_average_temp()))
     print("PS\tPCI\tINTAKE\tEXHAUST\tBOOSTA\tBOOSTB")
     print("{0}\t{1}\t{2}\t{3}\t{4}\t{5}".format(fan_ps.get_current_rpm(), fan_pci.get_current_rpm(), fan_intake.get_current_rpm(), fan_exhaust.get_current_rpm(), fan_boosta.get_current_rpm(), fan_boostb.get_current_rpm()))
+    print("test")
 
 
     time.sleep(1)
