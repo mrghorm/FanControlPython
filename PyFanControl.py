@@ -97,12 +97,12 @@ while True:
     Temp.update_current_temps()
 
 
-    print("CPU 1: {0}".format(cpu1.get_temps()))
-    print("CPU 2: {0}".format(cpu2.get_temps()))
+    #print("CPU 1: {0}".format(cpu1.get_temps()))
+    #print("CPU 2: {0}".format(cpu2.get_temps()))
     temp_percent = cpu1.get_current_percentage_highest()
 
-    print("CPU 1 Highest {0}".format(cpu1.get_highest_temp()))
-    print("CPU 2 Highest {0}".format(cpu2.get_highest_temp()))
+    #print("CPU 1 Highest {0}".format(cpu1.get_highest_temp()))
+    #print("CPU 2 Highest {0}".format(cpu2.get_highest_temp()))
 
 #    temp_percent = temp_convert_to_percentage(40, 60, highest)
 
@@ -110,8 +110,8 @@ while True:
     #fan_boosta.request_set_percentage(cpu1.get_current_percentage_highest())
     #fan_boostb.request_set_percentage(cpu1.get_current_percentage_highest())
 
-    print("BOOSTA RPM {0}".format(fan_boosta.get_current_rpm()))
-    print("BOOSTB RPM {0}".format(fan_boostb.get_current_rpm()))
+    #print("BOOSTA RPM {0}".format(fan_boosta.get_current_rpm()))
+    #print("BOOSTB RPM {0}".format(fan_boostb.get_current_rpm()))
 
     Fan.write_request()
 
@@ -169,5 +169,7 @@ while True:
         ,fan_boostb.get_current_rpm()
         ,str(datetime.datetime.now())
     )
+
+    print(frame)
 
     time.sleep(1)
