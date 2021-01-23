@@ -24,7 +24,8 @@ class Temp:
         self.label_file = self.file_location + self.prefix + self.label_suffix
         #self.max_file = self.file_location + self.prefix + self.max_suffix
 
-        self.file_list = [self.input_file, self.label_file, self.max_file]
+        #self.file_list = [self.input_file, self.label_file, self.max_file]
+        self.file_list = [self.input_file, self.label_file]
 
         # Check all files
 
