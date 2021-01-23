@@ -1,4 +1,5 @@
 import time
+import datetime
 
 from Fan import Fan
 from Temp import Temp
@@ -84,10 +85,10 @@ cpu1.set_min(30)
 cpu2.set_max(45)
 cpu2.set_min(30)
 
-ps_temp = Temp("Tp0C", fan_parent_dir, )
-pci_temp = Temp("Te1P", fan_parent_dir, )
-southbridge_diode_temp = Temp("TN0D", fan_parent_dir, )
-southbridge_heatsink_temp = Temp("TN0H", fan_parent_dir, )
+ps_temp = Temp("Tp0C", fan_parent_dir, "temp72")
+pci_temp = Temp("Te1P", fan_parent_dir, "temp57")
+southbridge_diode_temp = Temp("TN0D", fan_parent_dir, "temp53")
+southbridge_heatsink_temp = Temp("TN0H", fan_parent_dir, "temp54")
 
 
 while True:
@@ -95,11 +96,11 @@ while True:
     # This function should be depreciated
     Temp.update_current_temps()
 
-    
+
     print("CPU 1: {0}".format(cpu1.get_temps()))
     print("CPU 2: {0}".format(cpu2.get_temps()))
     temp_percent = cpu1.get_current_percentage_highest()
-    
+
     print("CPU 1 Highest {0}".format(cpu1.get_highest_temp()))
     print("CPU 2 Highest {0}".format(cpu2.get_highest_temp()))
 
@@ -118,19 +119,55 @@ while True:
 #    print("Coretemp 10: {0}".format(realtemp1.get_current_temp()))
 
 
-    
+
     ### Begin Frame Output ###
 
-    print("##### BEGIN FRAME OUTPUT #####")
-    print("CPU 1: {0}".format(cpu1.get_temps()))
-    print("High: {0}, Average: {1}".format(cpu1.get_highest_temp(), cpu1.get_average_temp()))
-    print("CPU 2: {0}".format(cpu2.get_temps()))
-    print("High: {0}, Average: {1}".format(cpu2.get_highest_temp(), cpu2.get_average_temp()))
-    print("PS\tPCI\tINTAKE\tEXHAUST\tBOOSTA\tBOOSTB")
-    print("{0}\t{1}\t{2}\t{3}\t{4}\t{5}".format(fan_ps.get_current_rpm(), fan_pci.get_current_rpm(), fan_intake.get_current_rpm(), fan_exhaust.get_current_rpm(), fan_boosta.get_current_rpm(), fan_boostb.get_current_rpm()))
-    print("test")
 
+    frame = '''
+    ########## BEGIN FRAME OUTPUT ##########
+    TIME:  {16}
+    
+    TEMPS
+    CPU 1:
+      FULL:  {0}
+      HIGH:  {1}
+      AVG:   {2}
+        
+    CPU 2:
+      FULL:  {3}
+      HIGH:  {4}
+      AVG:   {5}
+        
+    TN0D:    {6}
+    TN0H:    {7}
+    PS:      {8}
+    PCI:     {9}
+    
+    FANS
+    PS:      {10}
+    PCI:     {11}
+    INTAKE:  {12}
+    EXHAUST: {13}
+    BOOSTA:  {14}
+    BOOSTB:  {15}
+    '''.format(
+        cpu1.get_temps()
+        ,cpu1.get_highest_temp()
+        ,cpu1.get_average_temp()
+        ,cpu2.get_temps()
+        ,cpu2.get_highest_temp()
+        ,cpu2.get_average_temp()
+        ,southbridge_diode_temp.get_current_temp()
+        ,southbridge_heatsink_temp.get_current_temp()
+        ,ps_temp.get_current_temp()
+        ,pci_temp.get_current_temp()
+        ,fan_ps.get_current_rpm()
+        ,fan_pci.get_current_rpm()
+        ,fan_intake.get_current_rpm()
+        ,fan_exhaust.get_current_rpm()
+        ,fan_boosta.get_current_rpm()
+        ,fan_boostb.get_current_rpm()
+        ,str(datetime.datetime.now())
+    )
 
     time.sleep(1)
-    
-
