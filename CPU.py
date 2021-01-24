@@ -32,14 +32,14 @@ class CPU:
             print("COREPREFIX " + coreprefix)
 
             core = Temp("core{0}".format(files_list.index(f)), self.directory, coreprefix)
-            
+
             self.cores.append(core)
             
             
     def get_temps(self):
         temps = []
         for core in self.cores:
-            temp = round(int(core.get_current_temp()) / 1000)
+            temp = int(core.get_current_temp())
             temps.append(temp)
             
         return temps

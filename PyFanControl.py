@@ -47,26 +47,26 @@ fan_parent_dir = "/sys/devices/platform/applesmc.768/"
 
 
 
-cpu_a_temps = []
-for i in range(2,8):
-    if(i==5):
-        x = 10
-    elif(i==6):
-        x = 11
-    elif(i== 7):
-        x = 12
-    else:
-        x = i
-
-    cpu_a_temps.append(Temp("cpua_{}".format(x), coretemp0_parent_dir, "temp{}".format(x)))
-
-
-for i in cpu_a_temps:
-    Temp.update_all_current_temps()
-    print(i.name)
-    print(i.get_current_temp())
-
-print("Highest: {0}".format(get_highest_temp_from_cpu(cpu_a_temps)))
+#cpu_a_temps = []
+#for i in range(2,8):
+#    if(i==5):
+#        x = 10
+#    elif(i==6):
+#        x = 11
+#    elif(i== 7):
+#        x = 12
+#    else:
+#        x = i
+#
+#    cpu_a_temps.append(Temp("cpua_{}".format(x), coretemp0_parent_dir, "temp{}".format(x)))
+#
+#
+#for i in cpu_a_temps:
+#    Temp.update_all_current_temps()
+#    print(i.name)
+#    print(i.get_current_temp())
+#
+#print("Highest: {0}".format(get_highest_temp_from_cpu(cpu_a_temps)))
 
 fan_boosta = Fan("BOOSTA", fan_parent_dir, "fan5")
 fan_boostb = Fan("BOOSTB", fan_parent_dir, "fan6")
@@ -92,7 +92,7 @@ southbridge_heatsink_temp = Temp("TN0H", fan_parent_dir, "temp54")
 
 
 southbridge_diode_temp.set_min_temp(60)
-southbridge_diode_temp.set_max_temp(80)
+southbridge_diode_temp.set_max_temp(90)
 
 
 # Main Loop
@@ -105,6 +105,8 @@ while True:
     sbd_p = southbridge_diode_temp.get_current_percentage()
     fan_intake.request_set_percentage(sbd_p)
     fan_exhaust.request_set_percentage(sbd_p)
+    fan_boosta.request_set_percentage(sbd_p)
+    fan_boostb.request_set_percentage(sbd_p)
 
     temp_percent = cpu1.get_current_percentage_highest()
 
