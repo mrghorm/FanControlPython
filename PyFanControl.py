@@ -91,6 +91,10 @@ southbridge_diode_temp = Temp("TN0D", fan_parent_dir, "temp53")
 southbridge_heatsink_temp = Temp("TN0H", fan_parent_dir, "temp54")
 
 
+southbridge_diode_temp.set_min_temp(60)
+southbridge_diode_temp.set_max_temp(80)
+
+
 # Main Loop
 while True:
 
@@ -98,7 +102,9 @@ while True:
     Fan.update_current_rpms()
     Temp.update_all_current_temps()
 
-
+    sbd_p = southbridge_diode_temp.get_current_percentage()
+    fan_intake.request_set_percentage(sbd_p)
+    fan_exhaust.request_set_percentage(sbd_p)
 
     temp_percent = cpu1.get_current_percentage_highest()
 
