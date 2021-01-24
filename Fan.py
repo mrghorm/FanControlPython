@@ -209,8 +209,17 @@ def overwrite_file(f, message):
 
     with open(f, 'w') as file_open:
 
-        # Truncate removes the current contents of the file
-        file_open.truncate()
+        try:
+            # Truncate removes the current contents of the file
+            file_open.truncate()
 
-        # Write value to file
-        file_open.write("{0}".format(message))
+            # Write value to file
+            file_open.write("{0}".format(message))
+
+        except OSError as e:
+            if e.errno == 5:
+                print("Error writing {0}:  Input/output error, retry next cycle".format(f))
+            else:
+                print("Error reading {0}:  Errno {1}".format(f, e.errno))
+
+        
