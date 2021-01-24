@@ -99,29 +99,29 @@ while True:
 ########## BEGIN FRAME OUTPUT ##########
 TIME:  {16}
 
-        TEMPS
+    TEMPS
 CPU 1:
-  FULL:  {0}
-  HIGH:  {1}
-  AVG:   {2}
+  FULL:  {0} C
+  HIGH:  {1} C
+  AVG:   {2} C
     
 CPU 2:
-  FULL:  {3}
-  HIGH:  {4}
-  AVG:   {5}
+  FULL:  {3} C
+  HIGH:  {4} C
+  AVG:   {5} C
     
-TN0D:    {6}
-TN0H:    {7}
-PS:      {8}
-PCI:     {9}
+TN0D:    {6} C
+TN0H:    {7} C
+PS:      {8} C
+PCI:     {9} C
 
-        FANS
-PS:      {10}
-PCI:     {11}
-INTAKE:  {12}
-EXHAUST: {13}
-BOOSTA:  {14}
-BOOSTB:  {15}
+    FANS
+PS:      {10} RPM
+PCI:     {11} RPM
+INTAKE:  {12} RPM
+EXHAUST: {13} RPM
+BOOSTA:  {14} RPM
+BOOSTB:  {15} RPM
 '''.format(
         cpu1.get_temps()
         ,cpu1.get_highest_temp()
