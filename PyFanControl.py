@@ -36,13 +36,13 @@ fan_exhaust.set_manual(1)
 #### Initialize Sensors ####
 # CPU 1
 cpu1 = CPU("cpu1", coretemp0_parent_dir, "temp")
-cpu1.set_max(45)
-cpu1.set_min(30)
+cpu1.set_max(80)
+cpu1.set_min(50)
 
 # CPU 2
 cpu2 = CPU("cpu2", coretemp1_parent_dir, "temp")
-cpu2.set_max(45)
-cpu2.set_min(30)
+cpu2.set_max(80)
+cpu2.set_min(50)
 
 # Power Supply
 ps_temp = Temp("Tp0C", fan_parent_dir, "temp72")
