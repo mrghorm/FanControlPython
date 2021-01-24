@@ -87,6 +87,12 @@ class Fan:
     def read_current_rpm(self):
         return int(read_single_line_file(self.input_file))
 
+    # Reads current RPM then writes value to current_rpm variable and returns the value
+    def update_current_rpm(self):
+        c = self.read_current_rpm()
+        self.fan_current_rpm = c
+        return c
+
     # Sets the fan[N]_manual file to desired value (should be 1 or 0)
     def set_manual(self, manual):
         overwrite_file(self.manual_file, manual)
@@ -135,7 +141,7 @@ class Fan:
     @classmethod
     def update_current_rpms(cls):
         for obj in cls.class_registry:
-            obj.fan_current_rpm = int(read_single_line_file(obj.input_file))
+            obj.update_current_rpm()
 
 
 ### FUNCTIONS ###

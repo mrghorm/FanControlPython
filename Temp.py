@@ -52,7 +52,7 @@ class Temp:
 
     # Read and update current temperature from input file
     def update_current_temp(self):
-        c = read_single_line_file(self.input_file)
+        c = self.read_current_temp()
         self.temp_current = c
         return c
 
@@ -82,7 +82,7 @@ class Temp:
     @classmethod
     def update_all_current_temps(cls):
         for obj in cls.class_registry:
-            obj.temp_current = round(int(read_single_line_file(obj.input_file)) / 1000)
+            obj.update_current_temp()
 
 ### FUNCTIONS ###
 
