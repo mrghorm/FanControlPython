@@ -42,9 +42,19 @@ class Temp:
             finally:
                 o.close()
 
+    # Returns current temp stored in sensors temperature variable
     def get_current_temp(self):
-        #return (self.temp_current)
-        return read_single_line_file(self.input_file)
+        return self.temp_current
+
+    # Returns current temperature found from sensors input file
+    def read_current_temp(self):
+        return round(int(read_single_line_file(self.input_file)) / 1000)
+
+    # Read and update current temperature from input file
+    def update_current_temp(self):
+        c = read_single_line_file(self.input_file)
+        self.temp_current = c
+        return c
 
     def set_max_temp(self, temp):
         self.temp_max = temp
@@ -70,7 +80,7 @@ class Temp:
 
     # Iterate through all current Fan objects and update current RPM value
     @classmethod
-    def update_current_temps(cls):
+    def update_all_current_temps(cls):
         for obj in cls.class_registry:
             obj.temp_current = round(int(read_single_line_file(obj.input_file)) / 1000)
 

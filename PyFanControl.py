@@ -62,7 +62,7 @@ for i in range(2,8):
 
 
 for i in cpu_a_temps:
-    Temp.update_current_temps()
+    Temp.update_all_current_temps()
     print(i.name)
     print(i.get_current_temp())
 
@@ -91,66 +91,47 @@ southbridge_diode_temp = Temp("TN0D", fan_parent_dir, "temp53")
 southbridge_heatsink_temp = Temp("TN0H", fan_parent_dir, "temp54")
 
 
+# Main Loop
 while True:
 
-    # This function should be depreciated
-    Temp.update_current_temps()
+    # Read all sensors and fans for inputs before performing logic
+    Fan.update_current_rpms()
+    Temp.update_all_current_temps()
 
 
-    #print("CPU 1: {0}".format(cpu1.get_temps()))
-    #print("CPU 2: {0}".format(cpu2.get_temps()))
+
     temp_percent = cpu1.get_current_percentage_highest()
-
-    #print("CPU 1 Highest {0}".format(cpu1.get_highest_temp()))
-    #print("CPU 2 Highest {0}".format(cpu2.get_highest_temp()))
-
-#    temp_percent = temp_convert_to_percentage(40, 60, highest)
-
-    #print("Percentage " + str(cpu1.get_current_percentage_highest()))
-    #fan_boosta.request_set_percentage(cpu1.get_current_percentage_highest())
-    #fan_boostb.request_set_percentage(cpu1.get_current_percentage_highest())
-
-    #print("BOOSTA RPM {0}".format(fan_boosta.get_current_rpm()))
-    #print("BOOSTB RPM {0}".format(fan_boostb.get_current_rpm()))
 
     Fan.write_request()
 
-#    print("Fan RPM: {0}".format(realfan1.get_current_rpm()))
-#    print("Coretemp 10: {0}".format(realtemp1.get_current_temp()))
-
-
-
-    ### Begin Frame Output ###
-
-
     frame = '''
-    ########## BEGIN FRAME OUTPUT ##########
-    TIME:  {16}
+########## BEGIN FRAME OUTPUT ##########
+TIME:  {16}
+
+        TEMPS
+CPU 1:
+  FULL:  {0}
+  HIGH:  {1}
+  AVG:   {2}
     
-    TEMPS
-    CPU 1:
-      FULL:  {0}
-      HIGH:  {1}
-      AVG:   {2}
-        
-    CPU 2:
-      FULL:  {3}
-      HIGH:  {4}
-      AVG:   {5}
-        
-    TN0D:    {6}
-    TN0H:    {7}
-    PS:      {8}
-    PCI:     {9}
+CPU 2:
+  FULL:  {3}
+  HIGH:  {4}
+  AVG:   {5}
     
-    FANS
-    PS:      {10}
-    PCI:     {11}
-    INTAKE:  {12}
-    EXHAUST: {13}
-    BOOSTA:  {14}
-    BOOSTB:  {15}
-    '''.format(
+TN0D:    {6}
+TN0H:    {7}
+PS:      {8}
+PCI:     {9}
+
+        FANS
+PS:      {10}
+PCI:     {11}
+INTAKE:  {12}
+EXHAUST: {13}
+BOOSTA:  {14}
+BOOSTB:  {15}
+'''.format(
         cpu1.get_temps()
         ,cpu1.get_highest_temp()
         ,cpu1.get_average_temp()

@@ -79,11 +79,15 @@ class Fan:
     def get_min_rpm(self):
         return int(self.fan_min_rpm)
 
-    # Reads current RPM of fan from driver file
+    # Returns current RPM value in object variable
     def get_current_rpm(self):
+        return self.fan_current_rpm
+
+    # Reads current RPM of fan from driver file
+    def read_current_rpm(self):
         return int(read_single_line_file(self.input_file))
 
-    # Sets the fanN_manual file to desired value (should be 1 or 0)
+    # Sets the fan[N]_manual file to desired value (should be 1 or 0)
     def set_manual(self, manual):
         overwrite_file(self.manual_file, manual)
         
@@ -139,7 +143,17 @@ class Fan:
 # Read single line from file
 def read_single_line_file(f):
     with open(f, 'r') as file_open:
-        line = file_open.readline()
+
+        try:
+            line = file_open.readline()
+        except OSError as e:
+            if e.errno == 5:
+                print("Error reading {0}:  Input/output error, retry next cycle".format(f))
+                return ""
+            else:
+                print("Error reading {0}:  Errno {1}".format(f, e.errno))
+                return ""
+
         line = line.rstrip()
 
         return line
