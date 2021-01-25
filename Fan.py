@@ -228,35 +228,38 @@ def read_single_line_file(f):
 def overwrite_file(f, message):
 
     # open file with write permissions
-    with open(f, 'w') as file_open:
+    #with open(f, 'w') as file_open:
 
-        try:
-            # Truncate removes the current contents of the file
-            file_open.truncate()
+    try:
 
-            # Write value to file
-            file_open.write("{0}".format(message))
+        file_open = open(f, 'w')
 
-        # Catch for OSError Errno 5:
-        # Sometimes, the applesmc driver fails to write to the applesmc.  In this case, writing the file results in
-        # OSError errno 5.  The file may be accessible after waiting and attempting to writing the file again.
-        except OSError as e:
-            if e.errno == 5:
-                print("Error writing {0}:  Input/output error, retry next cycle".format(f))
-                ##### REMOVE WHEN DONE #####
-                input("Press Enter to continue...")
-            else:
-                print("Error reading {0}:  Errno {1}".format(f, e.errno))
-                ##### REMOVE WHEN DONE #####
-                input("Press Enter to continue...")
+        # Truncate removes the current contents of the file
+        file_open.truncate()
 
-        # Catch other exceptions and try to continue
-        except Exception as e:
-            print(str(e))
-            print("Error writing {0}".format(f))
-            print("#### Attempting to continue...\n\n")
+        # Write value to file
+        file_open.write("{0}".format(message))
 
+    # Catch for OSError Errno 5:
+    # Sometimes, the applesmc driver fails to write to the applesmc.  In this case, writing the file results in
+    # OSError errno 5.  The file may be accessible after waiting and attempting to writing the file again.
+    except OSError as e:
+        if e.errno == 5:
+            print("Error writing {0}:  Input/output error, retry next cycle".format(f))
             ##### REMOVE WHEN DONE #####
             input("Press Enter to continue...")
+        else:
+            print("Error reading {0}:  Errno {1}".format(f, e.errno))
+            ##### REMOVE WHEN DONE #####
+            input("Press Enter to continue...")
+
+    # Catch other exceptions and try to continue
+    except Exception as e:
+        print(str(e))
+        print("Error writing {0}".format(f))
+        print("#### Attempting to continue...\n\n")
+
+        ##### REMOVE WHEN DONE #####
+        input("Press Enter to continue...")
 
 
