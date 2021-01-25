@@ -61,12 +61,20 @@ class Temp:
             print("Value Error casting to an integer, file may be empty or may have received an input/output error.")
             print("Error:  {0}\nLocation:  {1}".format(str(e), str(self.input_file)))
             print("Using last known good temperature value")
+
+            ##### REMOVE WHEN DONE #####
+            input("Press Enter to continue...")
+
             return self.temp_current
 
         # Catch for other errors, attempt to continue, return last known-good value
         except Exception as e:
             print(str(e))
             print("#### Attempting to continue...\n\n")
+
+            ##### REMOVE WHEN DONE #####
+            input("Press Enter to continue...")
+
             return self.temp_current
 
         # Else return casted value if try is a success
@@ -125,9 +133,17 @@ def read_single_line_file(f):
         except OSError as e:
             if e.errno == 5:
                 print("Error reading {0}:  Input/output error, retry next cycle".format(f))
+
+                ##### REMOVE WHEN DONE #####
+                input("Press Enter to continue...")
+
                 return "-1"
             else:
                 print("Error reading {0}:  Errno {1}".format(f, e.errno))
+
+                ##### REMOVE WHEN DONE #####
+                input("Press Enter to continue...")
+
                 return "-1"
 
         # General exception catch.  Attempt to continue even if file is not readable.
@@ -135,6 +151,10 @@ def read_single_line_file(f):
             print(str(e))
             print("Error reading {0}".format(f))
             print("#### Attempting to continue...\n\n")
+
+            ##### REMOVE WHEN DONE #####
+            input("Press Enter to continue...")
+
             return "-1"
 
         # If try statement runs successfully, continue as normal
@@ -163,11 +183,20 @@ def overwrite_file(f, message):
         except OSError as e:
             if e.errno == 5:
                 print("Error writing {0}:  Input/output error, retry next cycle".format(f))
+
+                ##### REMOVE WHEN DONE #####
+                input("Press Enter to continue...")
             else:
                 print("Error reading {0}:  Errno {1}".format(f, e.errno))
+
+                ##### REMOVE WHEN DONE #####
+                input("Press Enter to continue...")
 
         # Catch other exceptions and try to continue
         except Exception as e:
             print(str(e))
             print("Error writing {0}".format(f))
             print("#### Attempting to continue...\n\n")
+
+            ##### REMOVE WHEN DONE #####
+            input("Press Enter to continue...")
