@@ -135,14 +135,14 @@ def read_single_line_file(f):
                 print("Error reading {0}:  Input/output error, retry next cycle".format(f))
 
                 ##### REMOVE WHEN DONE #####
-                input("Press Enter to continue...")
+                #input("Press Enter to continue...")
 
                 return "-1"
             else:
                 print("Error reading {0}:  Errno {1}".format(f, e.errno))
 
                 ##### REMOVE WHEN DONE #####
-                input("Press Enter to continue...")
+                #input("Press Enter to continue...")
 
                 return "-1"
 
@@ -153,7 +153,7 @@ def read_single_line_file(f):
             print("#### Attempting to continue...\n\n")
 
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")
 
             return "-1"
 
