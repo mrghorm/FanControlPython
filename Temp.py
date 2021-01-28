@@ -63,7 +63,7 @@ class Temp:
             print("Using last known good temperature value")
 
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")
 
             return self.temp_current
 
@@ -73,7 +73,7 @@ class Temp:
             print("#### Attempting to continue...\n\n")
 
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")
 
             return self.temp_current
 
@@ -185,12 +185,12 @@ def overwrite_file(f, message):
                 print("Error writing {0}:  Input/output error, retry next cycle".format(f))
 
                 ##### REMOVE WHEN DONE #####
-                input("Press Enter to continue...")
+                #input("Press Enter to continue...")
             else:
                 print("Error reading {0}:  Errno {1}".format(f, e.errno))
 
                 ##### REMOVE WHEN DONE #####
-                input("Press Enter to continue...")
+                #input("Press Enter to continue...")
 
         # Catch other exceptions and try to continue
         except Exception as e:
@@ -199,4 +199,4 @@ def overwrite_file(f, message):
             print("#### Attempting to continue...\n\n")
 
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")

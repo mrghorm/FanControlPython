@@ -99,7 +99,7 @@ class Fan:
             print("Using last known good RPM")
 
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")
 
             return self.fan_current_rpm
 
@@ -109,7 +109,7 @@ class Fan:
             print("#### Attempting to continue...\n\n")
 
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")
 
             return self.fan_current_rpm
 
@@ -247,11 +247,11 @@ def overwrite_file(f, message):
         if e.errno == 5:
             print("Error writing {0}:  Input/output error, retry next cycle".format(f))
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")
         else:
             print("Error writing {0}:  Errno {1}".format(f, e.errno))
             ##### REMOVE WHEN DONE #####
-            input("Press Enter to continue...")
+            #input("Press Enter to continue...")
 
     # Catch other exceptions and try to continue
     except Exception as e:
@@ -260,6 +260,6 @@ def overwrite_file(f, message):
         print("#### Attempting to continue...\n\n")
 
         ##### REMOVE WHEN DONE #####
-        input("Press Enter to continue...")
+        #input("Press Enter to continue...")
 
 
