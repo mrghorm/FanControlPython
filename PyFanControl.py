@@ -77,20 +77,28 @@ while True:
     nbd_p = northbridge_diode_temp.get_current_percentage()
     fan_intake.request_set_percentage(nbd_p)
     fan_exhaust.request_set_percentage(nbd_p)
-    fan_boosta.request_set_percentage(nbd_p)
-    fan_boostb.request_set_percentage(nbd_p)
+    fan_boosta.request_set_percentage(nbd_p - 10)
+    fan_boostb.request_set_percentage(nbd_p - 10)
 
     # CPU 1 Logic
     cpu1_tp = cpu1.get_current_percentage_highest()
     fan_intake.request_set_percentage(cpu1_tp)
     fan_exhaust.request_set_percentage(cpu1_tp)
-    fan_boosta.request_set_percentage(cpu1_tp)
+    fan_boosta.request_set_percentage(cpu1_tp - 10)
 
     # CPU 2 Logic
     cpu2_tp = cpu2.get_current_percentage_highest()
     fan_intake.request_set_percentage(cpu2_tp)
     fan_exhaust.request_set_percentage(cpu2_tp)
-    fan_boostb.request_set_percentage(cpu2_tp)
+    fan_boostb.request_set_percentage(cpu2_tp - 10)
+
+    # PS Logic
+    ps_tp = ps_temp.get_current_percentage()
+    fan_ps.request_set_percentage(ps_tp)
+
+    # PCI Logic
+    pci_tp = pci_temp.get_current_percentage()
+    fan_pci.request_set_percentage(pci_tp)
 
     # Write requested fan RPM to driver files
     Fan.write_request()
