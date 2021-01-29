@@ -1,0 +1,7 @@
+
+WHERE TO FIND FILES IN SYSTEM:
+
+Notes for MacProA-Debian10 install:
+
+ - executables:  /opt/fanctl/
+ - systemctl exec: fanctl.service
