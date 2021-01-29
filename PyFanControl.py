@@ -145,12 +145,12 @@ BOOSTB:  {15} RPM   [{22}]
         ,fan_boosta.get_current_rpm()
         ,fan_boostb.get_current_rpm()
         ,str(datetime.datetime.now())
-        ,fan_ps.requested_rpm()
-        ,fan_pci.requested_rpm()
-        ,fan_intake.requested_rpm()
-        ,fan_exhaust.requested_rpm()
-        ,fan_boosta.requested_rpm()
-        ,fan_boostb.requested_rpm()
+        ,fan_ps.requested_rpm
+        ,fan_pci.requested_rpm
+        ,fan_intake.requested_rpm
+        ,fan_exhaust.requested_rpm
+        ,fan_boosta.requested_rpm
+        ,fan_boostb.requested_rpm
     )
 
     print(frame)
