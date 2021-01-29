@@ -1,0 +1,5 @@
+From: mr@ghorm.net
+To: mr@ghorm.net
+Subject: IMPORTANT - PyFanControl exited
+
+PyFanControl.py exited, restarting...
