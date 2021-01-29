@@ -100,9 +100,6 @@ while True:
     pci_tp = pci_temp.get_current_percentage()
     fan_pci.request_set_percentage(pci_tp)
 
-    # Write requested fan RPM to driver files
-    Fan.write_request()
-
     frame = '''
 ########## BEGIN FRAME OUTPUT ##########
 TIME:  {16}
@@ -123,13 +120,13 @@ TN0H:    {7} C
 PS:      {8} C
 PCI:     {9} C
 
-    FANS
-PS:      {10} RPM
-PCI:     {11} RPM
-INTAKE:  {12} RPM
-EXHAUST: {13} RPM
-BOOSTA:  {14} RPM
-BOOSTB:  {15} RPM
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      {10} RPM   [{17}]
+PCI:     {11} RPM   [{18}]
+INTAKE:  {12} RPM   [{19}]
+EXHAUST: {13} RPM   [{20}]
+BOOSTA:  {14} RPM   [{21}]
+BOOSTB:  {15} RPM   [{22}]
 '''.format(
         cpu1.get_temps()
         ,cpu1.get_highest_temp()
@@ -148,8 +145,17 @@ BOOSTB:  {15} RPM
         ,fan_boosta.get_current_rpm()
         ,fan_boostb.get_current_rpm()
         ,str(datetime.datetime.now())
+        ,fan_ps.requested_rpm()
+        ,fan_pci.requested_rpm()
+        ,fan_intake.requested_rpm()
+        ,fan_exhaust.requested_rpm()
+        ,fan_boosta.requested_rpm()
+        ,fan_boostb.requested_rpm()
     )
 
     print(frame)
+
+    # Write requested fan RPM to driver files
+    Fan.write_request()
 
     time.sleep(1)
