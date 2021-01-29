@@ -77,20 +77,20 @@ while True:
     nbd_p = northbridge_diode_temp.get_current_percentage()
     fan_intake.request_set_percentage(nbd_p)
     fan_exhaust.request_set_percentage(nbd_p)
-    fan_boosta.request_set_percentage(nbd_p - 10)
-    fan_boostb.request_set_percentage(nbd_p - 10)
+    fan_boosta.request_set_percentage(nbd_p)
+    fan_boostb.request_set_percentage(nbd_p)
 
     # CPU 1 Logic
     cpu1_tp = cpu1.get_current_percentage_highest()
     fan_intake.request_set_percentage(cpu1_tp)
     fan_exhaust.request_set_percentage(cpu1_tp)
-    fan_boosta.request_set_percentage(cpu1_tp - 10)
+    fan_boosta.request_set_percentage(cpu1_tp)
 
     # CPU 2 Logic
     cpu2_tp = cpu2.get_current_percentage_highest()
     fan_intake.request_set_percentage(cpu2_tp)
     fan_exhaust.request_set_percentage(cpu2_tp)
-    fan_boostb.request_set_percentage(cpu2_tp - 10)
+    fan_boostb.request_set_percentage(cpu2_tp)
 
     # PS Logic
     ps_tp = ps_temp.get_current_percentage()
