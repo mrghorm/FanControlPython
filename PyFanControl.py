@@ -15,7 +15,23 @@ coretemp1_parent_dir = "/sys/devices/platform/coretemp.1/hwmon/hwmon2/"
 
 fan_parent_dir = "/sys/devices/platform/applesmc.768/"
 
+logfile = "fanctl_log.txt"
+
 ###########################
+
+# Function to write logfile
+def write_log(logfile,frame):
+    try:
+        f = open(logfile, 'a')
+        f.write(frame)
+
+    except Exception as e:
+        print("Error writing to logfile")
+        print(e)
+        print("Attempting to continue...")
+
+    finally:
+        f.close()
 
 # Initialize Fans
 fan_boosta = Fan("BOOSTA", fan_parent_dir, "fan5")
@@ -154,8 +170,11 @@ BOOSTB:  {15} RPM   [{22}]
     )
 
     print(frame)
+    #write_log(logfile, frame)
 
     # Write requested fan RPM to driver files
     Fan.write_request()
 
     time.sleep(1)
+
+
