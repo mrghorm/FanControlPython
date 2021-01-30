@@ -7,7 +7,7 @@ fi
 
 while true; do
 
-	python3 PyFanControl.py
+	python3 PyFanControl.py >> fanctl_log.txt
 	exitcode=$?
 
 	if [ $exitcode -eq 130 ]; then

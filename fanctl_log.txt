@@ -1,0 +1,316 @@
+FILE /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp3_input
+CORENAME temp3_input
+COREPREFIX temp3
+FILE /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp10_input
+CORENAME temp10_input
+COREPREFIX temp10
+FILE /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp4_input
+CORENAME temp4_input
+COREPREFIX temp4
+FILE /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp11_input
+CORENAME temp11_input
+COREPREFIX temp11
+FILE /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp12_input
+CORENAME temp12_input
+COREPREFIX temp12
+FILE /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input
+CORENAME temp2_input
+COREPREFIX temp2
+FILE /sys/devices/platform/coretemp.1/hwmon/hwmon2/temp3_input
+CORENAME temp3_input
+COREPREFIX temp3
+FILE /sys/devices/platform/coretemp.1/hwmon/hwmon2/temp10_input
+CORENAME temp10_input
+COREPREFIX temp10
+FILE /sys/devices/platform/coretemp.1/hwmon/hwmon2/temp4_input
+CORENAME temp4_input
+COREPREFIX temp4
+FILE /sys/devices/platform/coretemp.1/hwmon/hwmon2/temp11_input
+CORENAME temp11_input
+COREPREFIX temp11
+FILE /sys/devices/platform/coretemp.1/hwmon/hwmon2/temp12_input
+CORENAME temp12_input
+COREPREFIX temp12
+FILE /sys/devices/platform/coretemp.1/hwmon/hwmon2/temp2_input
+CORENAME temp2_input
+COREPREFIX temp2
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:26.441166
+
+    TEMPS
+CPU 1:
+  FULL:  [39, 32, 37, 32, 34, 38] C
+  HIGH:  39 C
+  AVG:   35 C
+    
+CPU 2:
+  FULL:  [24, 29, 30, 29, 30, 26] C
+  HIGH:  30 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      819 RPM   [820]
+PCI:     799 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1039 RPM   [1040]
+BOOSTA:  1680 RPM   [1680]
+BOOSTB:  1675 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:27.456234
+
+    TEMPS
+CPU 1:
+  FULL:  [39, 34, 36, 33, 29, 37] C
+  HIGH:  39 C
+  AVG:   35 C
+    
+CPU 2:
+  FULL:  [25, 28, 30, 29, 30, 27] C
+  HIGH:  30 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      819 RPM   [820]
+PCI:     804 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1039 RPM   [1040]
+BOOSTA:  1680 RPM   [1680]
+BOOSTB:  1677 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:28.473004
+
+    TEMPS
+CPU 1:
+  FULL:  [38, 33, 36, 33, 28, 38] C
+  HIGH:  38 C
+  AVG:   34 C
+    
+CPU 2:
+  FULL:  [24, 28, 30, 29, 30, 26] C
+  HIGH:  30 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     851 RPM   [985]
+INTAKE:  1040 RPM   [1040]
+EXHAUST: 1039 RPM   [1040]
+BOOSTA:  1681 RPM   [1680]
+BOOSTB:  1679 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:29.490045
+
+    TEMPS
+CPU 1:
+  FULL:  [39, 34, 37, 33, 34, 41] C
+  HIGH:  41 C
+  AVG:   36 C
+    
+CPU 2:
+  FULL:  [24, 28, 32, 29, 30, 26] C
+  HIGH:  32 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     887 RPM   [985]
+INTAKE:  1040 RPM   [1040]
+EXHAUST: 1039 RPM   [1040]
+BOOSTA:  1677 RPM   [1680]
+BOOSTB:  1680 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:30.503781
+
+    TEMPS
+CPU 1:
+  FULL:  [39, 32, 37, 33, 28, 39] C
+  HIGH:  39 C
+  AVG:   35 C
+    
+CPU 2:
+  FULL:  [24, 28, 31, 29, 30, 26] C
+  HIGH:  31 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     919 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1039 RPM   [1040]
+BOOSTA:  1675 RPM   [1680]
+BOOSTB:  1684 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:31.517120
+
+    TEMPS
+CPU 1:
+  FULL:  [39, 33, 36, 32, 28, 38] C
+  HIGH:  39 C
+  AVG:   34 C
+    
+CPU 2:
+  FULL:  [24, 28, 30, 29, 30, 27] C
+  HIGH:  30 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     954 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1038 RPM   [1040]
+BOOSTA:  1676 RPM   [1680]
+BOOSTB:  1685 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:32.532013
+
+    TEMPS
+CPU 1:
+  FULL:  [39, 33, 36, 33, 28, 38] C
+  HIGH:  39 C
+  AVG:   34 C
+    
+CPU 2:
+  FULL:  [24, 28, 30, 29, 30, 26] C
+  HIGH:  30 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     969 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1038 RPM   [1040]
+BOOSTA:  1678 RPM   [1680]
+BOOSTB:  1686 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:33.547608
+
+    TEMPS
+CPU 1:
+  FULL:  [38, 33, 36, 33, 27, 42] C
+  HIGH:  42 C
+  AVG:   35 C
+    
+CPU 2:
+  FULL:  [24, 29, 30, 29, 30, 26] C
+  HIGH:  30 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     982 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1038 RPM   [1040]
+BOOSTA:  1680 RPM   [1680]
+BOOSTB:  1686 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:34.562263
+
+    TEMPS
+CPU 1:
+  FULL:  [39, 33, 37, 33, 29, 38] C
+  HIGH:  39 C
+  AVG:   35 C
+    
+CPU 2:
+  FULL:  [25, 28, 31, 29, 30, 26] C
+  HIGH:  31 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     986 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1038 RPM   [1040]
+BOOSTA:  1681 RPM   [1680]
+BOOSTB:  1685 RPM   [1680]
+
+
+########## BEGIN FRAME OUTPUT ##########
+TIME:  2021-01-29 17:02:35.575169
+
+    TEMPS
+CPU 1:
+  FULL:  [38, 34, 36, 33, 28, 38] C
+  HIGH:  38 C
+  AVG:   34 C
+    
+CPU 2:
+  FULL:  [24, 29, 30, 29, 30, 26] C
+  HIGH:  30 C
+  AVG:   28 C
+    
+TN0D:    66 C
+TN0H:    51 C
+PS:      32 C
+PCI:     31 C
+
+    FANS CURRENT RPM [REQUESTED RPM]
+PS:      820 RPM   [820]
+PCI:     988 RPM   [985]
+INTAKE:  1039 RPM   [1040]
+EXHAUST: 1038 RPM   [1040]
+BOOSTA:  1680 RPM   [1680]
+BOOSTB:  1684 RPM   [1680]
+
