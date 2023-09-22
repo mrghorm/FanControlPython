@@ -10,8 +10,8 @@ from Fan import overwrite_file
 
 ######  DEFINITIONS  ######
 
-coretemp0_parent_dir = "/sys/devices/platform/coretemp.0/hwmon/hwmon1/"
-coretemp1_parent_dir = "/sys/devices/platform/coretemp.1/hwmon/hwmon2/"
+coretemp0_parent_dir = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/"
+coretemp1_parent_dir = "/sys/devices/platform/coretemp.1/hwmon/hwmon1/"
 
 fan_parent_dir = "/sys/devices/platform/applesmc.768/"
 
